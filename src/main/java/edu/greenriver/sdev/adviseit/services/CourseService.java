@@ -1,7 +1,7 @@
 package edu.greenriver.sdev.adviseit.services;
 
 import edu.greenriver.sdev.adviseit.domain.CourseDTO;
-import edu.greenriver.sdev.adviseit.models.Course;
+import edu.greenriver.sdev.adviseit.models.CourseDAO;
 import edu.greenriver.sdev.adviseit.repositories.CourseRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,27 +18,27 @@ public class CourseService {
     }
 
     public void add(CourseDTO course) {
-        repository.save(new Course(course.getTitle()));
+        repository.save(new CourseDAO(course.getTitle()));
     }
 
     public List<CourseDTO> getAll() {
-        List<Course> courses = repository.findAll();
+        List<CourseDAO> courses = repository.findAll();
         List<CourseDTO> courseDTOS = new ArrayList<>();
-        for (Course course : courses) {
+        for (CourseDAO course : courses) {
             courseDTOS.add(new CourseDTO(course.getId(), course.getTitle()));
         }
         return courseDTOS;
     }
 
     public CourseDTO getById(int id) {
-        Course course = repository.getReferenceById(id);
+        CourseDAO course = repository.getReferenceById(id);
         return new CourseDTO(course.getId(), course.getTitle());
     }
 
-    public CourseDTO update(int id, Course newCourse) {
-        Course course = repository.getReferenceById(id);
+    public CourseDTO update(int id, CourseDAO newCourse) {
+        CourseDAO course = repository.getReferenceById(id);
         course.setTitle(newCourse.getTitle());
-        Course updatedCourse = repository.save(course);
+        CourseDAO updatedCourse = repository.save(course);
         return new CourseDTO(updatedCourse.getId(), updatedCourse.getTitle());
     }
 

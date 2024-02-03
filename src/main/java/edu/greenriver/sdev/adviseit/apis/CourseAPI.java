@@ -1,7 +1,7 @@
 package edu.greenriver.sdev.adviseit.apis;
 
 import edu.greenriver.sdev.adviseit.domain.CourseDTO;
-import edu.greenriver.sdev.adviseit.models.Course;
+import edu.greenriver.sdev.adviseit.models.CourseDAO;
 import edu.greenriver.sdev.adviseit.services.CourseService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -39,7 +39,7 @@ public class CourseAPI {
     }
 
     @PutMapping("/put/{id}")
-    public ResponseEntity<Object> update(@PathVariable int id, @RequestBody Course newCourse) {
+    public ResponseEntity<Object> update(@PathVariable int id, @RequestBody CourseDAO newCourse) {
         return new ResponseEntity<>(service.update(id, newCourse), HttpStatus.OK);
     }
 

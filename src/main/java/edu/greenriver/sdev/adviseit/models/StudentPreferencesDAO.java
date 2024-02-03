@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class StudentPreferences {
+public class StudentPreferencesDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
