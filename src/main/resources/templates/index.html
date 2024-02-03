@@ -5,6 +5,7 @@
         <title>AdviseIT API</title>
         <link th:href="@{/css/reset.css}" rel="stylesheet">
         <link th:href="@{/css/styles.css}" rel="stylesheet">
+        <link th:href="@{images/favicon.ico}" rel="icon">
     </head>
     <body>
         <h1>Welcome to AdviseIT</h1>
@@ -27,5 +28,16 @@
                 and keep up to date with changing course requirements.
             </p>
         </section>
+        <footer>
+            <p>
+                Please see our
+                <a th:href="@{https://github.com/davidkurilla/adviseit}" target="_blank">
+                    GitHub Repository
+                </a>
+                for more information
+            </p>
+            <p>Mint-Mocha Dev Team <span id="date"></span></p>
+        </footer>
+        <script th:src="@{js/script.js}"></script>
     </body>
 </html>
