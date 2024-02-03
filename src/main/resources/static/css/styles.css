@@ -1,0 +1,39 @@
+html {
+    background-color: #343f48;
+}
+
+body {
+    border: 5px solid #315048;
+    background-color: #c0ffee;
+    width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+}
+
+section {
+    margin-top: 20px;
+}
+
+p {
+    margin: 20px auto;
+}
+
+div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+img {
+    border-radius: 360px;
+}
