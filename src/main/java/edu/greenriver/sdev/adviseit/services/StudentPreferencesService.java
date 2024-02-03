@@ -4,10 +4,11 @@ import edu.greenriver.sdev.adviseit.domain.CourseDTO;
 import edu.greenriver.sdev.adviseit.domain.StudentPreferencesDTO;
 import edu.greenriver.sdev.adviseit.models.StudentPreferencesDAO;
 import edu.greenriver.sdev.adviseit.repositories.StudentPreferencesRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class StudentPreferencesService {
 
     private StudentPreferencesRepository repository;
