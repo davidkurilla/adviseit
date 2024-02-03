@@ -2,7 +2,7 @@ package edu.greenriver.sdev.adviseit.apis;
 
 import edu.greenriver.sdev.adviseit.model.dto.StudentPreferencesDTO;
 import edu.greenriver.sdev.adviseit.model.entities.StudentPreferences;
-import edu.greenriver.sdev.adviseit.database.objects.StudentPreferencesDAO;
+import edu.greenriver.sdev.adviseit.db.objects.StudentPreferencesDAO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

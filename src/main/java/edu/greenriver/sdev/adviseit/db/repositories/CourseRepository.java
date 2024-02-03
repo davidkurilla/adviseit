@@ -1,4 +1,4 @@
-package edu.greenriver.sdev.adviseit.database.repositories;
+package edu.greenriver.sdev.adviseit.db.repositories;
 
 import edu.greenriver.sdev.adviseit.model.entities.Course;
 import org.springframework.data.jpa.repository.JpaRepository;

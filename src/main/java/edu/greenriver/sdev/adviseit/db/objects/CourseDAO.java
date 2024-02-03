@@ -1,8 +1,8 @@
-package edu.greenriver.sdev.adviseit.database.objects;
+package edu.greenriver.sdev.adviseit.db.objects;
 
 import edu.greenriver.sdev.adviseit.model.dto.CourseDTO;
 import edu.greenriver.sdev.adviseit.model.entities.Course;
-import edu.greenriver.sdev.adviseit.database.repositories.CourseRepository;
+import edu.greenriver.sdev.adviseit.db.repositories.CourseRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

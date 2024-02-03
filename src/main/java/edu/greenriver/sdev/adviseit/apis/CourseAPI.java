@@ -2,7 +2,7 @@ package edu.greenriver.sdev.adviseit.apis;
 
 import edu.greenriver.sdev.adviseit.model.dto.CourseDTO;
 import edu.greenriver.sdev.adviseit.model.entities.Course;
-import edu.greenriver.sdev.adviseit.database.objects.CourseDAO;
+import edu.greenriver.sdev.adviseit.db.objects.CourseDAO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

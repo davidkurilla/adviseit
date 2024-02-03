@@ -1,8 +1,8 @@
-package edu.greenriver.sdev.adviseit.database.objects;
+package edu.greenriver.sdev.adviseit.db.objects;
 
 import edu.greenriver.sdev.adviseit.model.dto.StudentPreferencesDTO;
 import edu.greenriver.sdev.adviseit.model.entities.StudentPreferences;
-import edu.greenriver.sdev.adviseit.database.repositories.StudentPreferencesRepository;
+import edu.greenriver.sdev.adviseit.db.repositories.StudentPreferencesRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

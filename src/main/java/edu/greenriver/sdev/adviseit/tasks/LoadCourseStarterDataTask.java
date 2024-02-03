@@ -1,7 +1,7 @@
 package edu.greenriver.sdev.adviseit.tasks;
 
 import edu.greenriver.sdev.adviseit.model.dto.CourseDTO;
-import edu.greenriver.sdev.adviseit.database.objects.CourseDAO;
+import edu.greenriver.sdev.adviseit.db.objects.CourseDAO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
