@@ -30,7 +30,7 @@ public class StudentPreferencesService {
         List<StudentPreferencesDAO> preferences = repository.findAll();
         List<StudentPreferencesDTO> preferenceDTOS = new ArrayList<>();
         for(StudentPreferencesDAO preference : preferences){
-            preferenceDTOS.add(new StudentPreferencesDTO(preference.getId(), preference.getCoursesPerQuarter(), preference.getSummerQuarter()))
+            preferenceDTOS.add(new StudentPreferencesDTO(preference.getId(), preference.getCoursesPerQuarter(), preference.getSummerQuarter()));
         }
         return preferenceDTOS;
     }
