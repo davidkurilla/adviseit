@@ -1,4 +1,4 @@
-package edu.greenriver.sdev.adviseit.domain;
+package edu.greenriver.sdev.adviseit.model.dto;
 
 import lombok.*;
 

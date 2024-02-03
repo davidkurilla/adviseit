@@ -1,6 +1,6 @@
-package edu.greenriver.sdev.adviseit.structures;
+package edu.greenriver.sdev.adviseit.model.structures;
 
-import edu.greenriver.sdev.adviseit.domain.CourseDTO;
+import edu.greenriver.sdev.adviseit.model.dto.CourseDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.*;

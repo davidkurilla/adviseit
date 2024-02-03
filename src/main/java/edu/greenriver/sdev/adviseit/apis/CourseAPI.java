@@ -1,8 +1,8 @@
 package edu.greenriver.sdev.adviseit.apis;
 
-import edu.greenriver.sdev.adviseit.domain.CourseDTO;
-import edu.greenriver.sdev.adviseit.models.CourseDAO;
-import edu.greenriver.sdev.adviseit.services.CourseService;
+import edu.greenriver.sdev.adviseit.model.dto.CourseDTO;
+import edu.greenriver.sdev.adviseit.model.entities.Course;
+import edu.greenriver.sdev.adviseit.database.objects.CourseDAO;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +16,9 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 @Validated
 public class CourseAPI {
 
-    private final CourseService service;
+    private final CourseDAO service;
 
-    public CourseAPI(CourseService service) {
+    public CourseAPI(CourseDAO service) {
         this.service = service;
     }
 
@@ -39,7 +39,7 @@ public class CourseAPI {
     }
 
     @PutMapping("/put/{id}")
-    public ResponseEntity<Object> update(@PathVariable int id, @RequestBody CourseDAO newCourse) {
+    public ResponseEntity<Object> update(@PathVariable int id, @RequestBody Course newCourse) {
         return new ResponseEntity<>(service.update(id, newCourse), HttpStatus.OK);
     }
 

@@ -1,11 +1,9 @@
 package edu.greenriver.sdev.adviseit.apis;
 
-import edu.greenriver.sdev.adviseit.domain.StudentPreferencesDTO;
-import edu.greenriver.sdev.adviseit.models.CourseDAO;
-import edu.greenriver.sdev.adviseit.models.StudentPreferencesDAO;
-import edu.greenriver.sdev.adviseit.services.StudentPreferencesService;
+import edu.greenriver.sdev.adviseit.model.dto.StudentPreferencesDTO;
+import edu.greenriver.sdev.adviseit.model.entities.StudentPreferences;
+import edu.greenriver.sdev.adviseit.database.objects.StudentPreferencesDAO;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -18,9 +16,9 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 @Validated
 public class StudentPreferencesAPI {
 
-    private final StudentPreferencesService service;
+    private final StudentPreferencesDAO service;
 
-    public StudentPreferencesAPI(StudentPreferencesService service){
+    public StudentPreferencesAPI(StudentPreferencesDAO service){
         this.service = service;
     }
 
@@ -41,7 +39,7 @@ public class StudentPreferencesAPI {
     }
 
     @PutMapping("/put/{id}")
-    public ResponseEntity<Object> update(@PathVariable int id, @RequestBody StudentPreferencesDAO newPreference) {
+    public ResponseEntity<Object> update(@PathVariable int id, @RequestBody StudentPreferences newPreference) {
         return new ResponseEntity<>(service.update(id, newPreference), HttpStatus.OK);
     }
 

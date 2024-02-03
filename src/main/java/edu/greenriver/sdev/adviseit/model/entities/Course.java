@@ -1,4 +1,4 @@
-package edu.greenriver.sdev.adviseit.models;
+package edu.greenriver.sdev.adviseit.model.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class CourseDAO {
+public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

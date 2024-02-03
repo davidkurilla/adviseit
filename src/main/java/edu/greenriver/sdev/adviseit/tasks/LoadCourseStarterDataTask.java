@@ -1,16 +1,16 @@
 package edu.greenriver.sdev.adviseit.tasks;
 
-import edu.greenriver.sdev.adviseit.domain.CourseDTO;
-import edu.greenriver.sdev.adviseit.services.CourseService;
+import edu.greenriver.sdev.adviseit.model.dto.CourseDTO;
+import edu.greenriver.sdev.adviseit.database.objects.CourseDAO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class LoadCourseStarterDataTask implements CommandLineRunner {
 
-    private final CourseService service;
+    private final CourseDAO service;
 
-    public LoadCourseStarterDataTask(CourseService service) {
+    public LoadCourseStarterDataTask(CourseDAO service) {
         this.service = service;
     }
 
