@@ -1,44 +1,54 @@
 package edu.greenriver.sdev.adviseit.tasks;
 
-import edu.greenriver.sdev.adviseit.model.dto.CourseDTO;
-import edu.greenriver.sdev.adviseit.db.objects.CourseDAO;
+import edu.greenriver.sdev.adviseit.model.entities.Course;
+import edu.greenriver.sdev.adviseit.services.CourseService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class LoadCourseStarterDataTask implements CommandLineRunner {
 
-    private final CourseDAO service;
+    private final CourseService service;
 
-    public LoadCourseStarterDataTask(CourseDAO service) {
+    public LoadCourseStarterDataTask(CourseService service) {
         this.service = service;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
-        final CourseDTO[] courseDTOS = {
-                new CourseDTO("MATH97"),
-                new CourseDTO("ENGL101"),
-                new CourseDTO("ENGL126"),
-                new CourseDTO("MATH141"),
-                new CourseDTO("MATH146"),
-                new CourseDTO("CMST210"),
-                new CourseDTO("Lab Science"),
-                new CourseDTO("SDEV101"),
-                new CourseDTO("SDEV201"),
-                new CourseDTO("SDEV106"),
-                new CourseDTO("SDEV117"),
-                new CourseDTO("CS108"),
-                new CourseDTO("SDEV121"),
-                new CourseDTO("SDEV218"),
-                new CourseDTO("SDEV219"),
-                new CourseDTO("SDEV220"),
-                new CourseDTO("SDEV280")
+        final Course[] courseDTOS = {
+                new Course("MATH97", new ArrayList<>()),
+                new Course("ENGL101", new ArrayList<>()),
+                new Course("ENGL126", new ArrayList<>()),
+                new Course("MATH141", new ArrayList<>()),
+                new Course("MATH146", new ArrayList<>()),
+                new Course("CMST210", new ArrayList<>()),
+                new Course("Lab Science", new ArrayList<>()),
+                new Course("SDEV101", new ArrayList<>()),
+                new Course("SDEV201", new ArrayList<>()),
+                new Course("SDEV106", new ArrayList<>()),
+                new Course("SDEV117", new ArrayList<>()),
+                new Course("CS108", new ArrayList<>()),
+                new Course("SDEV121", new ArrayList<>()),
+                new Course("SDEV218", new ArrayList<>()),
+                new Course("SDEV219", new ArrayList<>()),
+                new Course("SDEV220", new ArrayList<>()),
+                new Course("SDEV280", new ArrayList<>())
         };
 
-        for (CourseDTO courseDTO : courseDTOS) {
+        for (Course courseDTO : courseDTOS) {
             service.add(courseDTO);
         }
+
+        service.update(10, new Course("SDEV117", new ArrayList<>(List.of(service.getById(9)))));
+        service.update(11, new Course("CS108", new ArrayList<>(List.of(service.getById(0)))));
+        service.update(12, new Course("SDEV121", new ArrayList<>(List.of(service.getById(11)))));
+        service.update(13, new Course("SDEV218", new ArrayList<>(List.of(service.getById(0)))));
+        service.update(14, new Course("SDEV219", new ArrayList<>(List.of(service.getById(13)))));
+        service.update(15, new Course("SDEV220", new ArrayList<>(List.of(service.getById(14)))));
     }
 }
