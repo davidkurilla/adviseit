@@ -1,6 +1,6 @@
 package edu.greenriver.sdev.adviseit.model.structures;
 
-import edu.greenriver.sdev.adviseit.model.dto.CourseDTO;
+import edu.greenriver.sdev.adviseit.model.entities.Course;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -8,20 +8,17 @@ import java.util.*;
 @Component
 public class CourseGraph {
 
-    private final Map<CourseDTO, List<CourseDTO>> graph;
+    private final Map<Course, List<Course>> graph;
 
-    public CourseGraph(List<CourseDTO> courseDTOList) {
-        graph = new HashMap<>();
-        for (CourseDTO courseDTO : courseDTOList) {
-            addVertex(courseDTO);
-        }
+    public CourseGraph() {
+        this.graph = new HashMap<>();
     }
 
-    public void addVertex(CourseDTO vertex) {
+    public void addVertex(Course vertex) {
         graph.put(vertex, new LinkedList<>());
     }
 
-    public void addEdge(CourseDTO source, CourseDTO destination) {
+    public void addEdge(Course source, Course destination) {
         if (!graph.containsKey(source)) {
             addVertex(source);
         }
@@ -31,11 +28,11 @@ public class CourseGraph {
         graph.get(source).add(destination);
     }
 
-    public void removeVertex(CourseDTO vertex) {
+    public void removeVertex(Course vertex) {
         graph.remove(vertex);
     }
 
-    public void removeEdge(CourseDTO source, CourseDTO destination) {
+    public void removeEdge(Course source, Course destination) {
         if (!graph.containsKey(source)) {
             return;
         }
@@ -47,10 +44,10 @@ public class CourseGraph {
 
     public boolean hasCycle() {
 
-        Set<CourseDTO> visited = new HashSet<>();
-        Set<CourseDTO> recursionStack = new HashSet<>();
+        Set<Course> visited = new HashSet<>();
+        Set<Course> recursionStack = new HashSet<>();
 
-        for (CourseDTO vertex : graph.keySet()) {
+        for (Course vertex : graph.keySet()) {
             if (!visited.contains(vertex) && hasCycleUtil(vertex, visited, recursionStack)) {
                 return true;
             }
@@ -59,12 +56,12 @@ public class CourseGraph {
         return false;
     }
 
-    private boolean hasCycleUtil(CourseDTO vertex, Set<CourseDTO> visited, Set<CourseDTO> recursionStack) {
+    private boolean hasCycleUtil(Course vertex, Set<Course> visited, Set<Course> recursionStack) {
 
         visited.add(vertex);
         recursionStack.add(vertex);
 
-        for (CourseDTO neighbor : graph.getOrDefault(vertex, Collections.emptyList())) {
+        for (Course neighbor : graph.getOrDefault(vertex, Collections.emptyList())) {
             if (!visited.contains(neighbor)) {
                 if (hasCycleUtil(neighbor, visited, recursionStack)) {
                     return true;
@@ -79,17 +76,17 @@ public class CourseGraph {
         return false;
     }
 
-    public List<CourseDTO> sortCourses() {
-        Stack<CourseDTO> stack = new Stack<>();
-        Set<CourseDTO> visited = new HashSet<>();
+    public List<Course> sortCourses() {
+        Stack<Course> stack = new Stack<>();
+        Set<Course> visited = new HashSet<>();
 
-        for (CourseDTO vertex : graph.keySet()) {
+        for (Course vertex : graph.keySet()) {
             if (!visited.contains(vertex)) {
                 sortUtil(vertex, visited, stack);
             }
         }
 
-        List<CourseDTO> result = new ArrayList<>();
+        List<Course> result = new ArrayList<>();
         while (!stack.isEmpty()) {
             result.add(stack.pop());
         }
@@ -97,10 +94,10 @@ public class CourseGraph {
         return result;
     }
 
-    private void sortUtil(CourseDTO vertex, Set<CourseDTO> visited, Stack<CourseDTO> stack) {
+    private void sortUtil(Course vertex, Set<Course> visited, Stack<Course> stack) {
         visited.add(vertex);
 
-        for (CourseDTO neighbor : graph.getOrDefault(vertex, Collections.emptyList())) {
+        for (Course neighbor : graph.getOrDefault(vertex, Collections.emptyList())) {
             if (!visited.contains(neighbor)) {
                 sortUtil(neighbor, visited, stack);
             }

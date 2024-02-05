@@ -1,8 +1,7 @@
 package edu.greenriver.sdev.adviseit.apis;
 
-import edu.greenriver.sdev.adviseit.model.dto.StudentPreferencesDTO;
 import edu.greenriver.sdev.adviseit.model.entities.StudentPreferences;
-import edu.greenriver.sdev.adviseit.db.objects.StudentPreferencesDAO;
+import edu.greenriver.sdev.adviseit.services.StudentPreferencesService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,14 +15,14 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 @Validated
 public class StudentPreferencesAPI {
 
-    private final StudentPreferencesDAO service;
+    private final StudentPreferencesService service;
 
-    public StudentPreferencesAPI(StudentPreferencesDAO service){
+    public StudentPreferencesAPI(StudentPreferencesService service){
         this.service = service;
     }
 
     @PostMapping("/post")
-    public ResponseEntity<Object> add(@RequestBody StudentPreferencesDTO preference){
+    public ResponseEntity<Object> add(@RequestBody StudentPreferences preference){
         service.add(preference);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
