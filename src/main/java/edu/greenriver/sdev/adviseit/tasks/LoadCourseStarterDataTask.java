@@ -3,12 +3,14 @@ package edu.greenriver.sdev.adviseit.tasks;
 import edu.greenriver.sdev.adviseit.model.entities.Course;
 import edu.greenriver.sdev.adviseit.services.CourseService;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Order(1)
 public class LoadCourseStarterDataTask implements CommandLineRunner {
 
     private final CourseService service;

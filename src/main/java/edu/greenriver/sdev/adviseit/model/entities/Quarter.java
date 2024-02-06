@@ -13,5 +13,5 @@ import java.util.List;
 public class Quarter {
 
     private Season season;
-    private List<Course> courseList;
+    private Course[] courseList;
 }
