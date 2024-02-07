@@ -15,7 +15,6 @@ public class StudentPreferencesService {
         studentPreferencesList = new ArrayList<>();
     }
 
-
     public void add(StudentPreferences preferences){
         studentPreferencesList.add(preferences);
     }
