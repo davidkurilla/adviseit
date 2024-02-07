@@ -16,26 +16,17 @@ import java.util.List;
 public class ScheduleFactory {
 
     private final CourseMapper courseMapper;
-    private Schedule schedule;
-    private StudentPreferences studentPreferences;
 
-    public ScheduleFactory(CourseMapper courseMapper, StudentPreferencesService studentPreferencesService) {
+    public ScheduleFactory(CourseMapper courseMapper) {
         this.courseMapper = courseMapper;
-        this.schedule = new Schedule(new ArrayList<>());
-        this.studentPreferences = new StudentPreferences(3, true);
     }
 
-    private List<Course> buildCourseMap() {
-        courseMapper.loadCourses();
-        courseMapper.loadCourseDependencies();
-        return courseMapper.sortAndExportCourses();
-    }
+    private Schedule generateSchedule(StudentPreferences studentPreferences, List<Course> courseList) {
 
-    public void populateSchedule() {
-
-        List<List<Course>> parsedList = buildScheduleFromList(buildCourseMap(), studentPreferences.getCoursesPerQuarter());
+        List<List<Course>> parsedList = buildScheduleFromList(courseList, studentPreferences.getCoursesPerQuarter());
 
         // int totalNumberOfQuarters = (int) Math.ceil((double) parsedList.size() / (double) studentPreferences.getCoursesPerQuarter());
+        Schedule schedule = new Schedule(new ArrayList<>());
 
         Season currentSeason = Season.FALL;
         for (int i = 0; i < parsedList.size(); i++) {
@@ -49,10 +40,12 @@ public class ScheduleFactory {
             // Increment SEASON to the next SEASON
             currentSeason = seasonCycler(currentSeason);
         }
+
+        return schedule;
     }
 
-    public Schedule build() {
-        return schedule;
+    public Schedule build(StudentPreferences preferences, List<Course> courseList) {
+        return generateSchedule(preferences, courseMapper.build(courseList));
     }
 
     private Season seasonCycler(Season currentSeason) {
