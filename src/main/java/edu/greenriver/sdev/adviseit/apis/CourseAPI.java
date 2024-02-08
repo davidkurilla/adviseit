@@ -37,6 +37,11 @@ public class CourseAPI {
         return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 
+    @GetMapping("/get/title/{title}")
+    public ResponseEntity<Object> getByTitle(@PathVariable String title){
+        return new ResponseEntity<>(service.getByName(title), HttpStatus.OK);
+    }
+
     @PutMapping("/put/{id}")
     public ResponseEntity<Object> update(@PathVariable int id, @RequestBody Course newCourse) {
         return new ResponseEntity<>(service.update(id, newCourse), HttpStatus.OK);
