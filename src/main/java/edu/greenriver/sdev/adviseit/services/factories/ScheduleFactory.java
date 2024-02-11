@@ -28,13 +28,22 @@ public class ScheduleFactory {
         // int totalNumberOfQuarters = (int) Math.ceil((double) parsedList.size() / (double) studentPreferences.getCoursesPerQuarter());
         Schedule schedule = new Schedule(new ArrayList<>());
 
-        Season currentSeason = Season.FALL;
+        //Season currentSeason = Season.FALL;
+        Season currentSeason = studentPreferences.getStartingSeason();
         for (int i = 0; i < parsedList.size(); i++) {
 
             // ADD a new Quarter object with that season
             schedule.getQuarterList().add(new Quarter(currentSeason, new Course[studentPreferences.getCoursesPerQuarter()]));
             for (int j = 0; j < parsedList.get(i).size(); j++) {
-                schedule.getQuarterList().get(i).getCourseList()[j] = parsedList.get(i).get(j);
+
+                //load null courses into summer quarter if studentPreference set to false
+                if(!studentPreferences.getSummerQuarter() && currentSeason.equals(Season.SUMMER)){
+                    schedule.getQuarterList().get(i).getCourseList()[j] = null;
+                } else {
+                    schedule.getQuarterList().get(i).getCourseList()[j] = parsedList.get(i).get(j);
+                }
+
+
             }
 
             // Increment SEASON to the next SEASON
@@ -61,8 +70,10 @@ public class ScheduleFactory {
                 break;
             case SPRING:
                 nextSeason = Season.SUMMER;
+                break;
             case SUMMER:
                 nextSeason = Season.FALL;
+                break;
             default:
                 nextSeason = Season.FALL;
                 break;
