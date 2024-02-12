@@ -1,5 +1,6 @@
 package edu.greenriver.sdev.adviseit.model.entities;
 
+import edu.greenriver.sdev.adviseit.model.enums.Season;
 import lombok.*;
 
 @Data
@@ -10,5 +11,7 @@ public class StudentPreferences {
     private Integer coursesPerQuarter;
 
     private Boolean summerQuarter;
+
+    private Season startingSeason;
 
 }
