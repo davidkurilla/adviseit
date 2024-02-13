@@ -12,6 +12,8 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/schedules")
 public class ScheduleAPI {
