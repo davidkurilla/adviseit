@@ -30,14 +30,19 @@ public class ScheduleFactory {
 
         //Season currentSeason = Season.FALL;
         Season currentSeason = studentPreferences.getStartingSeason();
+
         for (int i = 0; i < parsedList.size(); i++) {
 
+            //prevent courses from being added to summer quarter if preferences set to false
+            if(!studentPreferences.getSummerQuarter() && currentSeason.equals(Season.SUMMER)){
+                currentSeason = seasonCycler(currentSeason);
+            }
             // ADD a new Quarter object with that season
             schedule.getQuarterList().add(new Quarter(currentSeason, new Course[studentPreferences.getCoursesPerQuarter()]));
             for (int j = 0; j < parsedList.get(i).size(); j++) {
+                //add course to schedule
                 schedule.getQuarterList().get(i).getCourseList()[j] = parsedList.get(i).get(j);
             }
-
             // Increment SEASON to the next SEASON
             currentSeason = seasonCycler(currentSeason);
         }
@@ -86,4 +91,7 @@ public class ScheduleFactory {
 
         return result;
     }
+
+
+
 }
