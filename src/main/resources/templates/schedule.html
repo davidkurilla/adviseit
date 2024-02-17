@@ -10,10 +10,25 @@
 </head>
 <body>
     <section class="schedule">
-        success
+        <p th:text="'CoursesPerQuarter: ' + ${preferences.getCoursesPerQuarter()}"></p>
+        <p th:text="'SummerQuarter: ' + ${preferences.getSummerQuarter()}"></p>
+        <p th:text="'StartingSeason: ' + ${preferences.getStartingSeason()}"></p>
+
+        <hr>
+
+        <div>
+            <th:block th:each="quarter : ${schedule.getQuarterList()}">
+                <p th:text="${quarter.getSeason()}"></p>
+                <ul>
+                   <th:block th:if="${course != null}" th:each="course : ${quarter.getCourseList()}">
+                       <li th:text="${course.getTitle()}"></li>
+                   </th:block>
+                </ul>
+            </th:block>
+        </div>
     </section>
 
-    <script src="../static/js/schedule.js"></script>
+<!--    <script src="../static/js/schedule.js"></script>-->
 </body>
 
 </html>
