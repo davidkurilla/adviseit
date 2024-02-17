@@ -1,11 +1,13 @@
 package edu.greenriver.sdev.adviseit.apis;
 
+import edu.greenriver.sdev.adviseit.model.entities.Schedule;
 import edu.greenriver.sdev.adviseit.model.entities.StudentPreferences;
 import edu.greenriver.sdev.adviseit.services.StudentPreferencesService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;

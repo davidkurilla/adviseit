@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AdviseIT API</title>
+  <link th:href="@{/css/reset.css}" rel="stylesheet">
+  <link th:href="@{/css/styles.css}" rel="stylesheet">
+  <link th:href="@{../static/icons/favicon.ico}" rel="icon">
+
+</head>
+<body>
+
+    <form action="#" th:action="@{/schedule}" th:object="${preferences}" method="post">
+      <label for="classesPerQuarter">Classes per quarter:</label>
+      <input type="number" th:field="*{coursesPerQuarter}" id="classesPerQuarter"><br>
+      <label for="summerQuarter">Taking summer quarter?</label>
+      <input type="checkbox" th:field="*{summerQuarter}" id="summerQuarter"><br>
+      <label for="startingQuarter">Starting quarter</label>
+      <select id="startingQuarter" th:field="*{startingSeason}" name="startingQuarter">
+        <option value="FALL">Fall</option>
+        <option value="WINTER">Winter</option>
+        <option value="SPRING">Spring</option>
+        <option value="SUMMER">Summer</option>
+      </select>
+      <br>
+      <button type="submit">submit</button>
+    </form>
+
+    <!--<script th:src="@{../js/schedule.js}"></script>-->
+</body>
+
+</html>

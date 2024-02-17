@@ -37,3 +37,7 @@ div {
 img {
     border-radius: 360px;
 }
+
+.schedule {
+    display: block;
+}
