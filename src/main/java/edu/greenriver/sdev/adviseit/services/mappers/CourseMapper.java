@@ -15,6 +15,11 @@ public class CourseMapper {
         this.courseGraph = courseGraph;
     }
 
+    /**
+     * assembles graph from courses
+     * @param courseList list of Course objects
+     * @return a sorted graph
+     */
     public List<Course> build(List<Course> courseList) {
         for (Course course : courseList) {
             courseGraph.addVertex(course);
