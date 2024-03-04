@@ -9,6 +9,10 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * loads a list of classes and their prerequisites
+ * @version 1.0
+ */
 @Component
 @Order(1)
 public class LoadCourseStarterDataTask implements CommandLineRunner {
